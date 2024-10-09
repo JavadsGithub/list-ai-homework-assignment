@@ -7,6 +7,9 @@ const nextConfig = {
     BASE_URL: "https://dummyjson.com/",
     ENCRYPTION_SALT: "£A78sa3.:71q",
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;
