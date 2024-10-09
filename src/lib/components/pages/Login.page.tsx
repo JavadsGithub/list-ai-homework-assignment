@@ -38,6 +38,7 @@ export const LoginPage = () => {
               variant="bordered"
               label="Username"
               placeholder="emilys"
+              required
               {...form.register("username")}
             />
             <Input
@@ -45,16 +46,18 @@ export const LoginPage = () => {
               label="Password"
               type="password"
               placeholder="emilyspass"
+              required
               {...form.register("password")}
             />
           </div>
+
+          <Spacer y={4} />
 
           <Button
             isLoading={loginMutation.isPending}
             type="submit"
             variant="flat"
             color="primary"
-            className="mt-4"
           >
             Login
           </Button>
