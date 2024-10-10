@@ -8,9 +8,14 @@ import styled from "styled-components";
 interface ForYouItemProps {
   book: Item;
   playItem: (item: Item) => void;
+  showProgress?: boolean;
 }
 
-export function CarouselItem({ book, playItem }: ForYouItemProps) {
+export function CarouselItem({
+  book,
+  playItem,
+  showProgress,
+}: ForYouItemProps) {
   const badged = useMemo(() => Math.random() > 0.5, []);
 
   return (
@@ -27,6 +32,7 @@ export function CarouselItem({ book, playItem }: ForYouItemProps) {
       <Details>
         <ItemTitle>{book.title}</ItemTitle>
         <ItemAuthor>{book.author}</ItemAuthor>
+        {showProgress && <Progress>{book.progress}% finished</Progress>}
       </Details>
     </$>
   );
@@ -43,7 +49,7 @@ const $ = styled.div`
   transition-duration: 200ms;
 
   &:hover {
-    opacity: .5;
+    opacity: 0.5;
     cursor: pointer;
   }
 `;
@@ -56,6 +62,11 @@ const ItemTitle = styled.div`
 const ItemAuthor = styled.div`
   font-size: 12px;
   opacity: 0.5;
+`;
+
+const Progress = styled.div`
+  font-size: 12px;
+  color: var(--brand);
 `;
 
 const ItemCover = styled(Image)`
@@ -80,7 +91,7 @@ const DotMark = styled.span`
   height: 14px;
   border-radius: 50%;
 
-  background-color: blue;
+  background-color: var(--brand-light);
 
   position: absolute;
   top: -4px;

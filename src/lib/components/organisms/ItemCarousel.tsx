@@ -15,9 +15,14 @@ import { CarouselItem } from "../atoms";
 interface ItemCarouselProps {
   title: React.ReactNode;
   items: Item[];
+  showProgress?: boolean;
 }
 
-export function ItemCarousel({ items, title }: ItemCarouselProps) {
+export function ItemCarousel({
+  items,
+  title,
+  showProgress,
+}: ItemCarouselProps) {
   const dispatch = useAppDispatch();
   const shrinkMode = useAppSelector(
     (state) => state.layout.playMode == "drawer"
@@ -47,7 +52,12 @@ export function ItemCarousel({ items, title }: ItemCarouselProps) {
 
       <Carousel ref={ref} {...events}>
         {items.map(($book) => (
-          <CarouselItem key={$book.id} book={$book} playItem={playItem} />
+          <CarouselItem
+            key={$book.id}
+            book={$book}
+            playItem={playItem}
+            showProgress={showProgress}
+          />
         ))}
       </Carousel>
     </$>
@@ -61,7 +71,7 @@ const $ = styled(motion.div)`
 
 const Title = styled.h3`
   padding-left: 24px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 
   font-size: 24px;
   font-weight: bold;

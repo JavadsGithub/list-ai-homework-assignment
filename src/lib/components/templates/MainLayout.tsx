@@ -1,10 +1,10 @@
 "use client";
 
 import {
-    FloatPlayer,
-    MainLayoutSidebar,
-    SidePlayer,
-    SidePlayerPlaceholder,
+  FloatPlayer,
+  MainLayoutSidebar,
+  SidePlayer,
+  SidePlayerPlaceholder,
 } from "$/lib/components";
 import { Spacer } from "@nextui-org/react";
 import React from "react";
@@ -40,7 +40,11 @@ const $ = styled.div`
   display: flex;
 `;
 
-const Content = styled.div`
+const Content = styled.div.attrs({
+  className: "hide-scrollbar",
+})`
   width: 100%;
   background-color: var(--card-background);
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;

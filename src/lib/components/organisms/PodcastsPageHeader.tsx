@@ -37,13 +37,14 @@ export function PodcastsPageHeader() {
 
 const $ = styled.div`
   height: 112px;
-  padding-top: 18px;
-  padding-right: 24px;
-  padding-left: 24px;
+  padding: 12px 24px;
+
+  background-color: var(--card-background);
 
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 999;
 
   display: flex;
   flex-direction: column;
