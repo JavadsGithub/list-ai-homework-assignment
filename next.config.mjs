@@ -23,6 +23,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/podcasts",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
