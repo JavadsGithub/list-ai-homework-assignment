@@ -13,6 +13,8 @@
   --round-button-light-background: #494949;
   --round-button-dark-background-hover: #383c3d;
   --round-button-light-background-hover: #5d5d5d;
+  --brand: #0db5ff;
+  --brand-light: #7f98fe;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -50,8 +50,6 @@ export function TagsBar({ tags }: TagsBarProps) {
 }
 
 const $ = styled.div`
-  padding: 0 24px 0 24px;
-
   display: flex;
   gap: 6px;
   flex-wrap: wrap;

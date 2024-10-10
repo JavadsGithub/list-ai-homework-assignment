@@ -22,12 +22,15 @@ export function SidePlayer() {
 
   return (
     <motion.div
-      animate={{ opacity: isAppearing ? 1 : 0 }}
+      animate={{
+        opacity: isAppearing ? 1 : 0,
+        visibility: isAppearing ? "visible" : "hidden",
+      }}
       transition={{
         delay: isAppearing ? 0.15 : 0,
         duration: isAppearing ? 0.15 : 0,
       }}
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0, visibility: "hidden" }}
     >
       <$ playMode={playMode}>
         <Blur bg={playingItem?.coverImage} />

@@ -47,6 +47,6 @@ export function setUserData(data: UserData): void {
 export function getUserData(): UserData | undefined {
   const userData = Cookies.get(process.env["USER_DATA"]!);
   if (userData) {
-    return JSON.parse(userData);
+    return JSON.parse(decryptString(userData));
   }
 }

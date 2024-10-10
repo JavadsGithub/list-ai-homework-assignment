@@ -15,7 +15,9 @@ export function SidebarSavedItems() {
       </Header>
 
       <Suspense>
-        <TagsBar tags={SAVED_ITEMS_TAGS} />
+        <div className="px-5">
+          <TagsBar tags={SAVED_ITEMS_TAGS} />
+        </div>
       </Suspense>
 
       <SavedItemsList />
