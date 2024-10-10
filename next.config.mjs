@@ -10,6 +10,19 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  compiler: {
+    styledComponents: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.amazonaws.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

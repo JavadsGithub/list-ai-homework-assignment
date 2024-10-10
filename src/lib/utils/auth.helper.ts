@@ -1,3 +1,5 @@
+"use client";
+
 import Cookies from "js-cookie";
 import { UserData } from "$/lib/api";
 import { decryptString, encryptString } from "$/lib/utils";
@@ -40,14 +42,11 @@ export function removeTokens(target?: "accessToken" | "refreshToken") {
 }
 
 export function setUserData(data: UserData): void {
-  localStorage.setItem(
-    process.env["USER_DATA"]!,
-    encryptString(JSON.stringify(data))
-  );
+  Cookies.set(process.env["USER_DATA"]!, encryptString(JSON.stringify(data)));
 }
-export function getUserData(): UserData | undefined | void {
-  const item = localStorage.getItem(process.env["USER_DATA"]!);
-  if (item) {
-    return JSON.parse(decryptString(item));
+export function getUserData(): UserData | undefined {
+  const userData = Cookies.get(process.env["USER_DATA"]!);
+  if (userData) {
+    return JSON.parse(userData);
   }
 }

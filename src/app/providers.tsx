@@ -17,7 +17,7 @@ export function Providers({ children }: ProviderProps) {
     <QueryClientProvider client={queryClient}>
       <ReduxProvider store={store}>
         <NextUIProvider>
-          {children}
+          <main className="dark text-foreground bg-background">{children}</main>
           <Toaster />
         </NextUIProvider>
       </ReduxProvider>

@@ -15,6 +15,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      backgroundColor: {
+        "main-layout": "#a6e6e8",
+      },
     },
   },
   darkMode: "class",

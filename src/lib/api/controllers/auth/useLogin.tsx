@@ -1,6 +1,6 @@
 "use client";
 
-import { setToken } from "$/lib/utils";
+import { setToken, setUserData } from "$/lib/utils";
 import { useMutation } from "@tanstack/react-query";
 import { loginController } from "./login.controller";
 import { LoginRequestProps } from "./login.controller.types";
@@ -14,11 +14,12 @@ export const useLogin = () => {
     mutationKey: ["post-login"],
     mutationFn: (values: LoginRequestProps) => loginController(values),
     onSuccess(data) {
-      const { accessToken, refreshToken } = data;
+      const { accessToken, refreshToken, ...userData } = data;
       setToken({
         accessToken,
         refreshToken,
       });
+      setUserData(userData);
       toast.success("Login Successfull.");
       router.replace("/");
     },
