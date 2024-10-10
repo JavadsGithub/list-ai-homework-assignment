@@ -1,6 +1,12 @@
 "use client";
 
-import { MainLayoutSidebar } from "$/lib/components";
+import {
+    FloatPlayer,
+    MainLayoutSidebar,
+    SidePlayer,
+    SidePlayerPlaceholder,
+} from "$/lib/components";
+import { Spacer } from "@nextui-org/react";
 import React from "react";
 import styled from "styled-components";
 
@@ -12,7 +18,16 @@ export function MainLayout({ children }: MainLayoutProps) {
   return (
     <$>
       <MainLayoutSidebar />
+
+      <Spacer x={1} />
+
       <Content>{children}</Content>
+
+      <SidePlayerPlaceholder />
+
+      <SidePlayer />
+
+      <FloatPlayer />
     </$>
   );
 }
@@ -23,7 +38,6 @@ const $ = styled.div`
   overflow: hidden;
 
   display: flex;
-  gap: 6px;
 `;
 
 const Content = styled.div`

@@ -33,17 +33,24 @@ export const layoutsSlice = createSlice({
   reducers: {
     setPlayingItem(state, action: PayloadAction<{ item: Item | null }>) {
       state.playingItem = action.payload.item;
-      if (!state.playMode) state.playMode = "drawer";
+      state.playMode = "drawer";
     },
     setPlayMode(state, action: PayloadAction<{ mode: PlayMode }>) {
       state.playMode = action.payload.mode;
+    },
+    closePlayingItem(state) {
+      state.playingItem = null;
+      state.playMode = null;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setPlayMode, setPlayingItem } = layoutsSlice.actions;
+export const { setPlayMode, setPlayingItem, closePlayingItem } =
+  layoutsSlice.actions;
 
 export const selectSavedItems = (state: RootState) => state.layout.savedItems;
+export const selectPlayMode = (state: RootState) => state.layout.playMode;
+export const selectPlayingItem = (state: RootState) => state.layout.playingItem;
 
 export const layoutReducer = layoutsSlice.reducer;
