@@ -16,6 +16,8 @@ export function TopRatedPodcasts() {
 
 const $ = styled.div`
   width: 100%;
+  padding-right: 24px;
+  padding-left: 24px;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);

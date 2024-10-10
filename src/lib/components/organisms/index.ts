@@ -1,3 +1,5 @@
 export * from "./MainLayoutSidebar"
 export * from "./SidePlayer"
 export * from "./TopRatedPodcasts"
+export * from "./PodcastsPageHeader"
+export * from "./ItemCarousel"
