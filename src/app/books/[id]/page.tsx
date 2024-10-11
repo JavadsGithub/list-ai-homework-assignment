@@ -1,3 +1,4 @@
+import { getSingleProductController } from "$/lib/api/controllers/books";
 import { SingleBookPage } from "$/lib/components";
 import {
   dehydrate,
@@ -5,8 +6,17 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 
-export default async function Page() {
+export default async function Page({
+  params: { id },
+}: {
+  params: { id: string };
+}) {
   const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ["book"],
+    queryFn: () => getSingleProductController({ id }),
+  });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
