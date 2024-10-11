@@ -24,11 +24,11 @@ export function SidePlayer() {
         opacity: isAppearing ? 1 : 0,
         visibility: isAppearing ? "visible" : "hidden",
       },
-      initial: {
+      initial: { opacity: 0, visibility: "hidden" },
+      transition: {
         delay: isAppearing ? 0.15 : 0,
         duration: isAppearing ? 0.15 : 0,
       },
-      transition: { opacity: 0, visibility: "hidden" },
     }),
     [isAppearing]
   );
@@ -37,7 +37,7 @@ export function SidePlayer() {
     <$
       animate={animation.animate as any}
       transition={animation.transition}
-      initial={animation.initial}
+      initial={animation.initial as any}
       playMode={playMode}
     >
       <Blur bg={playingItem?.coverImage} />

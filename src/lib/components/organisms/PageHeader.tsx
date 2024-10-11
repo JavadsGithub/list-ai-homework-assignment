@@ -86,8 +86,7 @@ export function PageHeader({ title, compact }: PageHeaderProps) {
 }
 
 const $ = styled.div`
-  height: 128px;
-  padding: 12px 24px 20px 24px;
+  padding: 12px 24px;
 
   position: sticky;
   top: 0;
@@ -96,14 +95,13 @@ const $ = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 8px;
 
   background-color: var(--card-background);
 `;
 
 const HeaderRow = styled.div`
   width: 100%;
-  height: 50%;
+  height: 54px;
 
   display: flex;
   justify-content: space-between;

@@ -38,6 +38,7 @@ const $ = styled.div`
 
 const Title = styled.div`
   display: flex;
+  align-items: center;
   gap: 4px;
 
   font-weight: bold;
