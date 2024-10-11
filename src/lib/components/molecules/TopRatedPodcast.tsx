@@ -35,7 +35,7 @@ export function TopRatedPodcast({ item }: TopRatedPodcastProps) {
       onClick={setPlayingItem}
     >
       <Cover
-        // width={82}
+        width={82}
         height={82}
         alt="cover"
         src={item?.coverImage}
@@ -58,11 +58,13 @@ export function TopRatedPodcast({ item }: TopRatedPodcastProps) {
 
 const $ = styled(motion.div)`
   min-height: 118px;
+  padding-left: 16px;
   border-radius: 4px;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  position: relative;
 
   &:hover {
     cursor: pointer;
@@ -70,8 +72,7 @@ const $ = styled(motion.div)`
 `;
 
 const Cover = styled(Image)`
-  min-width: 82px;
-  margin-left: 16px;
+  width: 82px;
 
   &:hover {
     cursor: pointer;
@@ -79,7 +80,7 @@ const Cover = styled(Image)`
 `;
 
 const Details = styled.div`
-  width: 100%;
+  max-width: 70%;
   height: 85px;
   margin-left: 16px;
 
@@ -110,6 +111,11 @@ const ChevronButton = styled.button`
   height: 100%;
 
   opacity: 0.6;
+
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
 
   display: flex;
   justify-content: center;

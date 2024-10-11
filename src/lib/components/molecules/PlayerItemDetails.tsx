@@ -10,7 +10,7 @@ export function PlayerItemDetails() {
   return (
     <$>
       <ImageContainer>
-        <Image
+        <Cover
           width={145}
           height={145}
           src={playingItem?.coverImage}
@@ -63,3 +63,7 @@ const ChapterCategory = styled.div`
   font-size: 16px;
   opacity: 0.7;
 `;
+
+const Cover = styled(Image)`
+    object-fit: cover;
+`

@@ -8,7 +8,7 @@ import styled from "styled-components";
 export function UserDetails() {
   const [userName] = useState(getUserData());
   const fullName = useMemo(
-    () => `${userName?.firstName} ${userName?.lastName}`,
+    () => `${userName?.firstName ?? ""} ${userName?.lastName ?? ""}`,
     [userName]
   );
 

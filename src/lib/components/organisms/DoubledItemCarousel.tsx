@@ -1,6 +1,6 @@
 "use client";
 
-import { CarouselItem } from "$/lib/components";
+import { DoubledCarouselItem } from "$/lib/components";
 import {
   Item,
   setPlayingItem,
@@ -12,17 +12,17 @@ import React, { useCallback, useMemo, useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 import styled from "styled-components";
 
-interface ItemCarouselProps {
+interface DoubledItemCarouselProps {
   title: React.ReactNode;
   items: Item[];
   showProgress?: boolean;
 }
 
-export function ItemCarousel({
+export function DoubledItemCarousel({
   items,
   title,
   showProgress,
-}: ItemCarouselProps) {
+}: DoubledItemCarouselProps) {
   const dispatch = useAppDispatch();
   const shrinkMode = useAppSelector(
     (state) => state.layout.playMode == "drawer"
@@ -31,7 +31,9 @@ export function ItemCarousel({
   const ref =
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
   // Now we pass the reference to the useDraggable hook:
-  const { events } = useDraggable(ref);
+  const { events } = useDraggable(ref, {
+    applyRubberBandEffect: true,
+  });
 
   const animation = useMemo(
     () => (shrinkMode ? { width: "calc(100vw - 646px)" } : { width: "100%" }),
@@ -51,12 +53,12 @@ export function ItemCarousel({
       <Title>{title}</Title>
 
       <Carousel ref={ref} {...events}>
-        {items.map(($item) => (
-          <CarouselItem
-            key={$item.id}
-            item={$item}
-            playItem={playItem}
-            showProgress={showProgress}
+        {items.map(($book) => (
+          <DoubledCarouselItem
+            key={$book.id}
+            item={$book}
+            // playItem={playItem}
+            // showProgress={showProgress}
           />
         ))}
       </Carousel>
@@ -66,7 +68,9 @@ export function ItemCarousel({
 
 const $ = styled(motion.div)`
   width: 100%;
-  height: 264px;
+  height: 320px;
+
+  overflow-y: hidden;
 `;
 
 const Title = styled.h3`
@@ -79,13 +83,16 @@ const Title = styled.h3`
 
 const Carousel = styled.div`
   max-width: 100%;
-  min-height: 240px;
+  height: 250px;
   padding-top: 4px;
   padding-left: 24px;
   padding-right: 24px;
 
   overflow-x: hidden;
 
-  display: flex;
+  display: grid;
+  grid-template-rows: repeat(2, minmax(max-content, auto)) !important;
+  grid-template-columns: repeat(auto, minmax(0px, 1fr)) !important;
+  grid-auto-flow: column !important;
   gap: 16px;
 `;

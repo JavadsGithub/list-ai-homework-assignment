@@ -8,6 +8,7 @@ import {
 import styled from "styled-components";
 import { Image } from "@nextui-org/react";
 import { useCallback } from "react";
+import { IconChevronRight } from "@tabler/icons-react";
 
 interface SavedItemProps {
   item: Item;
@@ -34,6 +35,10 @@ export function SavedItem({ item }: SavedItemProps) {
         <Title>{item.title}</Title>
         <Author>{item.author}</Author>
       </Details>
+
+      <ChevronButton>
+        <IconChevronRight size={20} />
+      </ChevronButton>
     </$>
   );
 }
@@ -49,12 +54,15 @@ const $ = styled.div`
 
   transition-duration: 400ms;
 
+  position: relative;
+
   &:hover {
     background-color: rgba(255, 255, 255, 0.15);
   }
 `;
 
 const Details = styled.div`
+  max-width: 150px;
   height: 54px;
 
   display: flex;
@@ -77,4 +85,20 @@ const Author = styled.p`
   font-size: 12px;
 
   opacity: 0.5;
+`;
+
+const ChevronButton = styled.button`
+  width: 54px;
+  height: 100%;
+
+  opacity: 0.6;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
 `;

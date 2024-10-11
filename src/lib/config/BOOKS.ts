@@ -2,154 +2,175 @@ import { Item } from "../redux";
 
 export const BOOKS: Item[] = [
   {
-    id: "3",
-    title: "Specification by Example",
+    id: "1",
+    title: "The Lean Startup",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg",
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7Zozv04CiSdlgi03hGbLZeo9-8aeFbRwfwWCozT_u724CzaiQilUOtJOsAYgDIf_Tp-JrYXtQZN8j6o2nYf-0bDlD1XotPkRqeM2vzJjHRWs_ytOdwGx-JpSJXNVLFCcsj8z5ijGnBnk/w1200-h630-p-k-no-nu/ERIES_Enso_in_Blue_Master.png",
     itemType: "book",
     description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa, iure.",
-    progress: 31,
-    author: "Satnam Alag",
+      "The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation.",
+    progress: 37,
+    author: "Eric Ries",
+  },
+  {
+    id: "2",
+    title: "A Heart in a Body in the World",
+    coverImage:
+      "https://images-na.ssl-images-amazon.com/images/I/81XZTegGt2L._AC_UL210_SR210,210_.jpg",
+    description:
+      "A vital and heartbreaking story that brings together the #MeToo movement, the effects of gun violence.",
+    itemType: "book",
+    progress: 37,
+    author: "Deb Caletti",
+  },
+  {
+    id: "3",
+    title: "I Am Not Your Perfect Mexican Daughter",
+    coverImage:
+      "https://greenwayartsalliance.org/wp-content/uploads/2024/01/Screenshot-2024-01-18-at-1.01.16%E2%80%AFPM.png",
+    description:
+      "Perfect Mexican daughters do not go away to college. They do not move out of their parents.",
+    itemType: "book",
+    progress: 3,
+    author: "Erika Sánchez",
   },
   {
     id: "4",
-    title: "Flex 3 in Action",
+    title: "Girl in the Blue Coat",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed.jpg",
-    description:
-      "New web applications require engaging user-friendly interfaces   and the cooler, the better.",
+      "https://www.thenovl.com/wp-content/uploads/2017/06/9780316260633.jpg",
+    description: "winner of the Edgar Award for Best Young Adult Mystery.",
     itemType: "book",
-    progress: 54,
-    author: "Bernerd Allmon",
+    progress: 16,
+    author: "Monica Hesse",
   },
   {
     id: "5",
-    title: "Flex 4 in Action",
+    title: "The Lean Startup",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed2.jpg",
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7Zozv04CiSdlgi03hGbLZeo9-8aeFbRwfwWCozT_u724CzaiQilUOtJOsAYgDIf_Tp-JrYXtQZN8j6o2nYf-0bDlD1XotPkRqeM2vzJjHRWs_ytOdwGx-JpSJXNVLFCcsj8z5ijGnBnk/w1200-h630-p-k-no-nu/ERIES_Enso_in_Blue_Master.png",
+    itemType: "book",
     description:
-      'Using Flex, you can create high-quality, effective."Halo" versions.',
-    itemType: "podcast",
-    progress: 81,
-    author: "Satnam Alag",
+      "The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation.",
+    progress: 37,
+    author: "Eric Ries",
   },
   {
     id: "6",
-    title: "Collective Intelligence in Action",
+    title: "A Heart in a Body in the World",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/alag.jpg",
-    description: "There's a great deal of wisdom in a crowd.",
-    itemType: "podcast",
-    progress: 16,
-    author: "Rob Allen",
+      "https://images-na.ssl-images-amazon.com/images/I/81XZTegGt2L._AC_UL210_SR210,210_.jpg",
+    description:
+      "A vital and heartbreaking story that brings together the #MeToo movement, the effects of gun violence.",
+    itemType: "book",
+    progress: 37,
+    author: "Deb Caletti",
   },
   {
     id: "7",
-    title: "Specification by Example",
+    title: "I Am Not Your Perfect Mexican Daughter",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg",
-    itemType: "book",
+      "https://greenwayartsalliance.org/wp-content/uploads/2024/01/Screenshot-2024-01-18-at-1.01.16%E2%80%AFPM.png",
     description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa, iure.",
-    progress: 31,
-    author: "Satnam Alag",
+      "Perfect Mexican daughters do not go away to college. They do not move out of their parents.",
+    itemType: "book",
+    progress: 3,
+    author: "Erika Sánchez",
   },
   {
     id: "8",
-    title: "Flex 3 in Action",
+    title: "Girl in the Blue Coat",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed.jpg",
-    description:
-      "New web applications require engaging user-friendly interfaces   and the cooler, the better.",
+      "https://www.thenovl.com/wp-content/uploads/2017/06/9780316260633.jpg",
+    description: "winner of the Edgar Award for Best Young Adult Mystery.",
     itemType: "book",
-    progress: 54,
-    author: "Bernerd Allmon",
+    progress: 16,
+    author: "Monica Hesse",
   },
   {
     id: "9",
-    title: "Flex 4 in Action",
+    title: "The Lean Startup",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed2.jpg",
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7Zozv04CiSdlgi03hGbLZeo9-8aeFbRwfwWCozT_u724CzaiQilUOtJOsAYgDIf_Tp-JrYXtQZN8j6o2nYf-0bDlD1XotPkRqeM2vzJjHRWs_ytOdwGx-JpSJXNVLFCcsj8z5ijGnBnk/w1200-h630-p-k-no-nu/ERIES_Enso_in_Blue_Master.png",
+    itemType: "book",
     description:
-      'Using Flex, you can create high-quality, effective."Halo" versions.',
-    itemType: "podcast",
-    progress: 81,
-    author: "Satnam Alag",
+      "The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation.",
+    progress: 37,
+    author: "Eric Ries",
   },
   {
     id: "10",
-    title: "Collective Intelligence in Action",
+    title: "A Heart in a Body in the World",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/alag.jpg",
-    description: "There's a great deal of wisdom in a crowd.",
-    itemType: "podcast",
-    progress: 16,
-    author: "Rob Allen",
+      "https://images-na.ssl-images-amazon.com/images/I/81XZTegGt2L._AC_UL210_SR210,210_.jpg",
+    description:
+      "A vital and heartbreaking story that brings together the #MeToo movement, the effects of gun violence.",
+    itemType: "book",
+    progress: 37,
+    author: "Deb Caletti",
   },
   {
     id: "11",
-    title: "Specification by Example",
+    title: "I Am Not Your Perfect Mexican Daughter",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg",
-    itemType: "book",
+      "https://greenwayartsalliance.org/wp-content/uploads/2024/01/Screenshot-2024-01-18-at-1.01.16%E2%80%AFPM.png",
     description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa, iure.",
-    progress: 31,
-    author: "Satnam Alag",
+      "Perfect Mexican daughters do not go away to college. They do not move out of their parents.",
+    itemType: "book",
+    progress: 3,
+    author: "Erika Sánchez",
   },
   {
     id: "12",
-    title: "Flex 3 in Action",
+    title: "Girl in the Blue Coat",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed.jpg",
-    description:
-      "New web applications require engaging user-friendly interfaces   and the cooler, the better.",
+      "https://www.thenovl.com/wp-content/uploads/2017/06/9780316260633.jpg",
+    description: "winner of the Edgar Award for Best Young Adult Mystery.",
     itemType: "book",
-    progress: 54,
-    author: "Bernerd Allmon",
+    progress: 16,
+    author: "Monica Hesse",
   },
   {
     id: "13",
-    title: "Flex 4 in Action",
+    title: "The Lean Startup",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed2.jpg",
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7Zozv04CiSdlgi03hGbLZeo9-8aeFbRwfwWCozT_u724CzaiQilUOtJOsAYgDIf_Tp-JrYXtQZN8j6o2nYf-0bDlD1XotPkRqeM2vzJjHRWs_ytOdwGx-JpSJXNVLFCcsj8z5ijGnBnk/w1200-h630-p-k-no-nu/ERIES_Enso_in_Blue_Master.png",
+    itemType: "book",
     description:
-      'Using Flex, you can create high-quality, effective."Halo" versions.',
-    itemType: "podcast",
-    progress: 81,
-    author: "Satnam Alag",
+      "The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation.",
+    progress: 37,
+    author: "Eric Ries",
   },
   {
     id: "14",
-    title: "Collective Intelligence in Action",
+    title: "A Heart in a Body in the World",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/alag.jpg",
-    description: "There's a great deal of wisdom in a crowd.",
-    itemType: "podcast",
-    progress: 16,
-    author: "Rob Allen",
+      "https://images-na.ssl-images-amazon.com/images/I/81XZTegGt2L._AC_UL210_SR210,210_.jpg",
+    description:
+      "A vital and heartbreaking story that brings together the #MeToo movement, the effects of gun violence.",
+    itemType: "book",
+    progress: 37,
+    author: "Deb Caletti",
   },
   {
     id: "15",
-    title: "Specification by Example",
+    title: "I Am Not Your Perfect Mexican Daughter",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg",
-    itemType: "book",
+      "https://greenwayartsalliance.org/wp-content/uploads/2024/01/Screenshot-2024-01-18-at-1.01.16%E2%80%AFPM.png",
     description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa, iure.",
-    progress: 31,
-    author: "Satnam Alag",
+      "Perfect Mexican daughters do not go away to college. They do not move out of their parents.",
+    itemType: "book",
+    progress: 3,
+    author: "Erika Sánchez",
   },
   {
     id: "16",
-    title: "Flex 3 in Action",
+    title: "Girl in the Blue Coat",
     coverImage:
-      "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed.jpg",
-    description:
-      "New web applications require engaging user-friendly interfaces   and the cooler, the better.",
+      "https://www.thenovl.com/wp-content/uploads/2017/06/9780316260633.jpg",
+    description: "winner of the Edgar Award for Best Young Adult Mystery.",
     itemType: "book",
-    progress: 54,
-    author: "Bernerd Allmon",
+    progress: 16,
+    author: "Monica Hesse",
   },
 ];

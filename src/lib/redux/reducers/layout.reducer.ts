@@ -1,6 +1,7 @@
 import { SAVED_ITEMS } from "$/lib/config/SAVED_ITEMS";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "$/lib/redux";
+import { PODCASTS } from "$/lib/config/PODCASTS";
 
 export type ItemType = "podcast" | "book";
 export type PlayMode = "drawer" | "float" | null;
@@ -22,7 +23,7 @@ export interface LayoutSliceState {
 }
 
 const initialState: LayoutSliceState = {
-  savedItems: SAVED_ITEMS,
+  savedItems: PODCASTS.slice(0, 4),
   playingItem: null,
   playMode: null,
 };

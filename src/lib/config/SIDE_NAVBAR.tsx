@@ -22,12 +22,12 @@ export const SIDE_NAVBAR = [
     id: 2,
     title: "Category",
     icon: <IconLayoutGrid size={22} />,
-    href: "/category",
+    href: "",
   },
   {
     id: 3,
     title: "Search",
     icon: <IconSearch size={22} />,
-    href: "/search",
+    href: "",
   },
 ];

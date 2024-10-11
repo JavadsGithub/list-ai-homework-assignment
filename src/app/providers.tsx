@@ -3,6 +3,7 @@
 import { store } from "$/lib/redux/store";
 import { NextUIProvider } from "@nextui-org/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import { Provider as ReduxProvider } from "react-redux";
 
@@ -21,6 +22,7 @@ export function Providers({ children }: ProviderProps) {
           <Toaster />
         </NextUIProvider>
       </ReduxProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

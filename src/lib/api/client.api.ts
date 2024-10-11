@@ -25,6 +25,7 @@ export const client = (props?: ClientProps) => {
           ...config,
           headers: {
             ...config.header,
+            "Access-Control-Allow-Origin": "*",
             Authorization:
               "Bearer " + props.token
                 ? props.token

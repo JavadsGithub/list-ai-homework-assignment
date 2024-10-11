@@ -2,40 +2,31 @@
 
 import {
   ItemCarousel,
-  PodcastsPageHeader,
+  PageContainer,
   TopRatedPodcasts,
 } from "$/lib/components";
-import { BOOKS, RECENTLY_PLAYED } from "$/lib/config";
+import { RECENTLY_PLAYED_PODCASTS } from "$/lib/config";
+import { PODCASTS } from "$/lib/config/PODCASTS";
 import { Spacer } from "@nextui-org/react";
-import styled from "styled-components";
 
 export function PodcastsPage() {
   return (
-    <$>
-      <PodcastsPageHeader />
-
+    <PageContainer title="Podcast">
       <Spacer y={6} />
 
       <TopRatedPodcasts />
 
       <Spacer y={6} />
 
-      <ItemCarousel title="For You" items={BOOKS} />
+      <ItemCarousel title="For You" items={PODCASTS} />
 
       <Spacer y={4} />
 
-      <ItemCarousel title="Recently Played" items={RECENTLY_PLAYED} showProgress/>
-    </$>
+      <ItemCarousel
+        title="Recently Played"
+        items={RECENTLY_PLAYED_PODCASTS}
+        showProgress
+      />
+    </PageContainer>
   );
 }
-
-const $ = styled.div`
-  width: 100%;
-  max-width: calc(100vw - 280px);
-  padding-bottom: 400px;
-
-  display: flex;
-  flex-direction: column;
-
-  position: relative;
-`;

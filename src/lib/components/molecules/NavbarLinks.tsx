@@ -10,7 +10,11 @@ import styled from "styled-components";
 export function NavbarLinks() {
   const pathname = usePathname();
   const isButtonAction = useCallback(
-    (href: string) => pathname.includes(href),
+    (href: string) =>
+      href == ""
+        ? // filtering unimplemented paths
+          false
+        : pathname.includes(href),
     []
   );
 

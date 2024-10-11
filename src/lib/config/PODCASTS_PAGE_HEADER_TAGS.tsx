@@ -1,18 +1,17 @@
-import { ITag } from "../components";
 
-export const PODCASTS_PAGE_HEADER_TAGS = {
+export const TAGS = {
   profile: [
     {
       id: 0,
       queryName: "charges",
       queryValue: "90",
-      children: "90 ⚡",
+      children: "⚡ 90",
     },
     {
       id: 1,
       queryName: "favorite",
       queryValue: "90",
-      children: "100 ❤️️",
+      children: "❤️ 100",
     },
   ],
   categories: [
@@ -39,6 +38,14 @@ export const PODCASTS_PAGE_HEADER_TAGS = {
       queryName: "tag",
       queryValue: "trend",
       children: "Trend 🔥",
+    },
+  ],
+  compact: [
+    {
+      id: 0,
+      queryName: "favorite",
+      queryValue: "90",
+      children: "❤️ 100",
     },
   ],
 };

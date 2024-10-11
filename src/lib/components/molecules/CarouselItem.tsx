@@ -3,26 +3,26 @@
 import { Item } from "$/lib/redux";
 import { Image, Spacer } from "@nextui-org/react";
 import { useMemo } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-interface ForYouItemProps {
-  book: Item;
+interface CarouselItemProps {
+  item: Item;
   playItem: (item: Item) => void;
   showProgress?: boolean;
 }
 
 export function CarouselItem({
-  book,
+  item,
   playItem,
   showProgress,
-}: ForYouItemProps) {
+}: CarouselItemProps) {
   const badged = useMemo(() => Math.random() > 0.5, []);
 
   return (
-    <$ key={book.id} onClick={() => playItem(book)}>
+    <$ key={item.id} onClick={() => playItem(item)}>
       <DotMark className={String(!badged && "hidden")} />
       <ItemCover
-        src={book.coverImage}
+        src={item.coverImage}
         alt="cover"
         width={120}
         height={120}
@@ -30,9 +30,10 @@ export function CarouselItem({
       />
       <Spacer y={2} />
       <Details>
-        <ItemTitle>{book.title}</ItemTitle>
-        <ItemAuthor>{book.author}</ItemAuthor>
-        {showProgress && <Progress>{book.progress}% finished</Progress>}
+        {/* "compactMode" is corresponding to "showProgress" */}
+        <ItemTitle compactMode={showProgress}>{item.title}</ItemTitle>
+        <ItemAuthor>{item.author}</ItemAuthor>
+        {showProgress && <Progress>{item.progress}% finished</Progress>}
       </Details>
     </$>
   );
@@ -54,9 +55,17 @@ const $ = styled.div`
   }
 `;
 
-const ItemTitle = styled.div`
+const ItemTitle = styled.div<{ compactMode?: boolean }>`
   font-size: 14px;
   font-weight: bold;
+
+  ${(props) =>
+    props.compactMode &&
+    css`
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    `}
 `;
 
 const ItemAuthor = styled.div`
