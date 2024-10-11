@@ -1,8 +1,8 @@
 "use client";
 
-import Cookies from "js-cookie";
 import { UserData } from "$/lib/api";
 import { decryptString, encryptString } from "$/lib/utils";
+import Cookies from "js-cookie";
 
 export interface Tokens {
   accessToken: string;
@@ -32,11 +32,11 @@ export function getTokens(): Partial<Tokens> {
 
 export function removeTokens(target?: "accessToken" | "refreshToken") {
   if (target == "accessToken") {
-    Cookies.remove(process.env["ACCES_TOKEN"]!);
+    Cookies.remove(process.env["ACCESS_TOKEN"]!);
   } else if (target == "refreshToken") {
     Cookies.remove(process.env["REFRESH_TOKEN"]!);
   } else {
-    Cookies.remove(process.env["ACCES_TOKEN"]!);
+    Cookies.remove(process.env["ACCESS_TOKEN"]!);
     Cookies.remove(process.env["REFRESH_TOKEN"]!);
   }
 }
@@ -49,4 +49,10 @@ export function getUserData(): UserData | undefined {
   if (userData) {
     return JSON.parse(decryptString(userData));
   }
+}
+
+export function clearAuthData() {
+  Cookies.remove(process.env["ACCESS_TOKEN"]!);
+  Cookies.remove(process.env["REFRESH_TOKEN"]!);
+  Cookies.remove(process.env["USER_DATA"]!);
 }

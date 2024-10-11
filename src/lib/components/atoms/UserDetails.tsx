@@ -1,6 +1,8 @@
 "use client";
 
+import { useLogout } from "$/lib/hooks";
 import { getUserData } from "$/lib/utils";
+import { Tooltip } from "@nextui-org/react";
 import { IconUserCircle } from "@tabler/icons-react";
 import { useMemo, useState } from "react";
 import styled from "styled-components";
@@ -12,9 +14,13 @@ export function UserDetails() {
     [userName]
   );
 
+  const logout = useLogout();
+
   return (
     <$>
-      <IconUserCircle size={32} />
+      <Tooltip content="Click to Logout" color="danger" className="capitalize">
+        <IconUserCircle size={32} className="cursor-pointer" onClick={logout} />
+      </Tooltip>
       <h3>{fullName}</h3>
     </$>
   );
