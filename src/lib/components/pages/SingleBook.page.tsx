@@ -1,8 +1,14 @@
 "use client";
 
 import { useGetSingleBook } from "$/lib/api/controllers/books";
-import { PageContainer, Rating, SingleBookDescription, SingleBookDetails, SingleBookSpecifications } from "$/lib/components";
-import { Spacer } from "@nextui-org/react";
+import {
+  PageContainer,
+  Rating,
+  SingleBookDescription,
+  SingleBookDetails,
+  SingleBookSpecifications,
+} from "$/lib/components";
+import { Spacer, Spinner } from "@nextui-org/react";
 import { useParams } from "next/navigation";
 import styled from "styled-components";
 
@@ -14,7 +20,11 @@ export function SingleBookPage() {
   return (
     <PageContainer title={book?.title} compact>
       <InnerContainer>
-        <SingleBookDetails book={book} />
+        {getSingleBookQuery.isLoading ? (
+          <Spinner />
+        ) : (
+          <SingleBookDetails book={book} />
+        )}
 
         <Spacer y={10} />
 

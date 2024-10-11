@@ -5,7 +5,7 @@ import { getSingleProductController } from "./get-single-book.controller";
 
 // We need this object in ssr requests.
 export const getSingleBookConfig = (bookId: string) => ({
-  queryKey: ["get-single-book", bookId],
+  queryKey: ["book"],
   queryFn: () => getSingleProductController({ id: bookId }),
 });
 
