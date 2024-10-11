@@ -1,34 +1,26 @@
 "use client";
 
-import {
-  Item,
-  setPlayingItem as setPlayingItemAction,
-  useAppDispatch,
-} from "$/lib/redux";
-import styled from "styled-components";
+import { usePlayer } from "$/lib/hooks";
+import { Item } from "$/lib/redux";
 import { Image } from "@nextui-org/react";
-import { useCallback } from "react";
 import { IconChevronRight } from "@tabler/icons-react";
+import styled from "styled-components";
 
-interface SavedItemProps {
+interface SavedItemCardProps {
   item: Item;
 }
 
-export function SavedItem({ item }: SavedItemProps) {
-  const dispatch = useAppDispatch();
-
-  const setPlayingItem = useCallback(() => {
-    dispatch(setPlayingItemAction({ item }));
-  }, []);
+export function SavedItemCard({ item }: SavedItemCardProps) {
+  const { playItem } = usePlayer();
 
   return (
-    <$ onClick={setPlayingItem}>
+    <$ onClick={() => playItem(item)}>
       <Image
         width={60}
         height={60}
         src={item.coverImage}
-        radius="none"
         alt={`${item.title} cover`}
+        radius="none"
       />
 
       <Details>
@@ -48,13 +40,13 @@ const $ = styled.div`
   height: 80px;
   padding: 8px 12px 8px 12px;
 
+  position: relative;
+
   display: flex;
   align-items: center;
   gap: 10px;
 
   transition-duration: 400ms;
-
-  position: relative;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.15);
@@ -76,29 +68,29 @@ const Details = styled.div`
 `;
 
 const Title = styled.p`
-  line-height: 14px;
   font-size: 14px;
   font-weight: bold;
+  line-height: 14px;
 `;
 const Author = styled.p`
-  text-overflow: ellipsis;
-  font-size: 12px;
-
   opacity: 0.5;
+
+  font-size: 12px;
+  text-overflow: ellipsis;
 `;
 
 const ChevronButton = styled.button`
-  width: 54px;
-  height: 100%;
-
   opacity: 0.6;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 54px;
+  height: 100%;
 
   position: absolute;
   top: 50%;
   right: 0;
   transform: translateY(-50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

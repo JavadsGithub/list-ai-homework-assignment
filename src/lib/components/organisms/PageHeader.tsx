@@ -1,7 +1,7 @@
 "use client";
 
 import { RoundButton, TagsBar } from "$/lib/components";
-import { TAGS } from "$/lib/config";
+import { TAGS } from "$/lib/constants";
 import { Input, Spacer } from "@nextui-org/react";
 import {
   IconArrowLeft,
@@ -15,13 +15,16 @@ import styled from "styled-components";
 
 interface PageHeaderProps {
   title: React.ReactNode;
+  //**
+  /* Compact mode for pages like "/books/:id"
+   */
   compact?: boolean;
 }
 
 export function PageHeader({ title, compact }: PageHeaderProps) {
   const router = useRouter();
 
-  const goBack = useCallback(() => router.back(), []);
+  const goBack = useCallback(() => router.back(), [router]);
 
   if (compact) {
     return (
@@ -86,8 +89,6 @@ const $ = styled.div`
   height: 128px;
   padding: 12px 24px 20px 24px;
 
-  background-color: var(--card-background);
-
   position: sticky;
   top: 0;
   left: 0;
@@ -96,6 +97,8 @@ const $ = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  background-color: var(--card-background);
 `;
 
 const HeaderRow = styled.div`

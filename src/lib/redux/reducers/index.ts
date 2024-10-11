@@ -1,2 +1,3 @@
-export * from "./test.reducer"
-export * from "./layout.reducer"
+export * from "./podcasts.reducer";
+export * from "./books.reducer"
+export * from "./layout.reducer";

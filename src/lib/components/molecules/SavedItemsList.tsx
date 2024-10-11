@@ -2,7 +2,7 @@
 
 import { selectSavedItems, useAppSelector } from "$/lib/redux";
 import styled from "styled-components";
-import { SavedItem } from "$/lib/components";
+import { SavedItemCard } from "$/lib/components";
 
 export function SavedItemsList() {
   const savedItems = useAppSelector(selectSavedItems);
@@ -10,7 +10,7 @@ export function SavedItemsList() {
   return (
     <$>
       {savedItems?.map(($savedItem) => (
-        <SavedItem key={$savedItem.id} item={$savedItem} />
+        <SavedItemCard key={$savedItem.id} item={$savedItem} />
       ))}
     </$>
   );

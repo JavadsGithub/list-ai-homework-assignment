@@ -6,26 +6,38 @@ import {
   ItemCarousel,
   PageContainer,
 } from "$/lib/components";
-import { BOOKS, RECENTLY_PLAYED_BOOKS } from "$/lib/config";
+import { useAppSelector } from "$/lib/redux";
 import { Spacer } from "@nextui-org/react";
 import styled from "styled-components";
 
 export function BooksPage() {
+  const {
+    discoveryPodcasts,
+    forYouPodcasts,
+    recentlyPlayedPodcasts,
+    inProgressBook,
+  } = useAppSelector((state) => ({
+    discoveryPodcasts: state.podcasts.discovery,
+    forYouPodcasts: state.podcasts.forYou,
+    recentlyPlayedPodcasts: state.podcasts.recentlyPlayed,
+    inProgressBook: state.books.inProgress,
+  }));
+
   return (
     <PageContainer title="Books">
       <InProgresses>
-        <InProgressCard item={BOOKS[0]} />
+        <InProgressCard item={inProgressBook} />
       </InProgresses>
 
-      <DoubledItemCarousel title="Discovery" items={BOOKS} />
+      <DoubledItemCarousel title="Discovery" items={discoveryPodcasts} />
 
-      <ItemCarousel title="For You" items={BOOKS} />
+      <ItemCarousel title="For You" items={forYouPodcasts} />
 
       <Spacer y={4} />
 
       <ItemCarousel
+        items={recentlyPlayedPodcasts}
         title="Recently Played"
-        items={RECENTLY_PLAYED_BOOKS}
         showProgress
       />
     </PageContainer>

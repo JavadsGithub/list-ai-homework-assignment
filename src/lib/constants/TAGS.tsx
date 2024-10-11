@@ -1,4 +1,3 @@
-
 export const TAGS = {
   profile: [
     {
@@ -46,6 +45,26 @@ export const TAGS = {
       queryName: "favorite",
       queryValue: "90",
       children: "❤️ 100",
+    },
+  ],
+  savedItems: [
+    {
+      id: 0,
+      queryName: "saved-item-tag",
+      queryValue: "all",
+      children: "All",
+    },
+    {
+      id: 1,
+      queryName: "saved-item-tag",
+      queryValue: "podcasts",
+      children: "Podcast",
+    },
+    {
+      id: 2,
+      queryName: "saved-item-tag",
+      queryValue: "books",
+      children: "Books",
     },
   ],
 };

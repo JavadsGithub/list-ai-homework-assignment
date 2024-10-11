@@ -1,39 +1,36 @@
 "use client";
 
 import { BookSpec } from "$/lib/components";
-import { Item } from "$/lib/redux";
 import { Divider } from "@nextui-org/react";
 import { IconBook, IconFileCheck, IconHeadphones } from "@tabler/icons-react";
 import styled from "styled-components";
 
-interface SingleBookSpecificationsProps {
-  book?: Item;
-}
-
 export function SingleBookSpecifications() {
   return (
-    <$ className="flex h-5 items-center space-x-4 text-small">
+    <$>
       <BookSpec
-        description="List Points"
         icon={<IconBook />}
         title="list"
         value="73"
+        description="List Points"
       />
+
       <Divider orientation="vertical" />
 
       <BookSpec
-        description="Chapters"
         icon={<IconHeadphones />}
         title="listen"
         value="12"
+        description="Chapters"
       />
+
       <Divider orientation="vertical" />
 
       <BookSpec
-        description="Topics"
         icon={<IconFileCheck />}
         title="exam"
         value="15"
+        description="Topics"
       />
     </$>
   );
@@ -44,5 +41,9 @@ const $ = styled.div`
   height: 104px;
 
   display: flex;
+  align-items: center;
   gap: 16px;
+
+  font-size: 14px;
+  line-height: 20px;
 `;

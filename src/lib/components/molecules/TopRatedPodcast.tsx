@@ -1,14 +1,11 @@
 "use client";
 
-import {
-  Item,
-  setPlayingItem as setPlayingItemAction,
-  useAppDispatch,
-} from "$/lib/redux";
+import { usePlayer } from "$/lib/hooks";
+import { Item } from "$/lib/redux";
 import { Image, Spacer } from "@nextui-org/react";
 import { IconChevronRight } from "@tabler/icons-react";
 import { motion } from "framer-motion";
-import { useCallback } from "react";
+import { useMemo } from "react";
 import styled from "styled-components";
 
 interface TopRatedPodcastProps {
@@ -16,36 +13,43 @@ interface TopRatedPodcastProps {
 }
 
 export function TopRatedPodcast({ item }: TopRatedPodcastProps) {
-  const dispatch = useAppDispatch();
+  const animation = useMemo(
+    () => ({
+      whileHover: {
+        background:
+          "linear-gradient(90deg, rgba(42,117,152,1) 0%, rgba(39,73,89,1) 0%, rgba(37,37,38,1) 100%)",
+      },
+      initial: {
+        background:
+          "linear-gradient(90deg, rgba(42,117,152,1) 0%, rgba(41,108,139,1) 0%, rgba(37,37,38,1) 100%)",
+      },
+    }),
+    []
+  );
 
-  const setPlayingItem = useCallback(() => {
-    dispatch(setPlayingItemAction({ item }));
-  }, []);
+  const { playItem } = usePlayer();
 
   return (
     <$
-      whileHover={{
-        background:
-          "linear-gradient(90deg, rgba(42,117,152,1) 0%, rgba(39,73,89,1) 0%, rgba(37,37,38,1) 100%)",
-      }}
-      initial={{
-        background:
-          "linear-gradient(90deg, rgba(42,117,152,1) 0%, rgba(41,108,139,1) 0%, rgba(37,37,38,1) 100%)",
-      }}
-      onClick={setPlayingItem}
+      whileHover={animation.whileHover}
+      initial={animation.initial}
+      onClick={() => playItem(item)}
     >
       <Cover
         width={82}
         height={82}
-        alt="cover"
         src={item?.coverImage}
+        alt="cover"
         radius="sm"
       />
 
       <Details>
         <Title>{item?.title}</Title>
+
         <Episode>Episode 13</Episode>
+
         <Spacer y={1} />
+
         <Description>{item?.description}</Description>
       </Details>
 
@@ -61,10 +65,10 @@ const $ = styled(motion.div)`
   padding-left: 16px;
   border-radius: 4px;
 
+  position: relative;
+
   display: flex;
   align-items: center;
-
-  position: relative;
 
   &:hover {
     cursor: pointer;
@@ -84,11 +88,11 @@ const Details = styled.div`
   height: 85px;
   margin-left: 16px;
 
-  font-size: 14px;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
+  font-size: 14px;
 `;
 
 const Title = styled.div`
@@ -107,10 +111,10 @@ const Description = styled.div`
 `;
 
 const ChevronButton = styled.button`
+  opacity: 0.6;
+
   width: 54px;
   height: 100%;
-
-  opacity: 0.6;
 
   position: absolute;
   top: 50%;

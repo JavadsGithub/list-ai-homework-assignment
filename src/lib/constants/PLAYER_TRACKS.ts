@@ -1,4 +1,4 @@
-export const PLAYING_ITEM_TRACKS = [
+export const PLAYER_TRACKS = [
   {
     trackNumber: 1,
     title: "Rejecting Social Norms For",

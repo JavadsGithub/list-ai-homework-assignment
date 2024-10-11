@@ -1,5 +1,6 @@
 export * from "./BookSpec";
 export * from "./CarouselItem";
+export * from "./DoubledCarouselItem";
 export * from "./FloatPlayer";
 export * from "./InProgressCard";
 export * from "./NavbarLinks";
@@ -13,4 +14,3 @@ export * from "./TagsBar";
 export * from "./TitledParagraph";
 export * from "./TopRatedPodcast";
 export * from "./TracksList";
-export * from "./DoubledCarouselItem"

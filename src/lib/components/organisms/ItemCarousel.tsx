@@ -1,15 +1,10 @@
 "use client";
 
 import { CarouselItem } from "$/lib/components";
-import {
-  Item,
-  setPlayingItem,
-  useAppDispatch,
-  useAppSelector,
-} from "$/lib/redux";
+import { useDragScroll, usePlayer } from "$/lib/hooks";
+import { Item, useAppSelector } from "$/lib/redux";
 import { motion } from "framer-motion";
-import React, { useCallback, useMemo, useRef } from "react";
-import { useDraggable } from "react-use-draggable-scroll";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 
 interface ItemCarouselProps {
@@ -23,30 +18,28 @@ export function ItemCarousel({
   title,
   showProgress,
 }: ItemCarouselProps) {
-  const dispatch = useAppDispatch();
+  // carousel must shrink for player to be displayed properly
   const shrinkMode = useAppSelector(
     (state) => state.layout.playMode == "drawer"
   );
-  // We will use React useRef hook to reference the wrapping div:
-  const ref =
-    useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
-  // Now we pass the reference to the useDraggable hook:
-  const { events } = useDraggable(ref);
 
   const animation = useMemo(
-    () => (shrinkMode ? { width: "calc(100vw - 646px)" } : { width: "100%" }),
+    () => ({
+      animate: { width: shrinkMode ? "calc(100vw - 646px)" : "100%" },
+      initial: { width: "100%" },
+      transition: { duration: 0.15, delay: 0.15 },
+    }),
     [shrinkMode]
   );
 
-  const playItem = useCallback((item: Item) => {
-    dispatch(setPlayingItem({ item }));
-  }, []);
+  const { playItem } = usePlayer();
+  const { events, ref } = useDragScroll();
 
   return (
     <$
-      animate={animation}
-      initial={{ width: "100%" }}
-      transition={{ duration: 0.15, delay: 0.15 }}
+      animate={animation.animate}
+      initial={animation.initial}
+      transition={animation.transition}
     >
       <Title>{title}</Title>
 

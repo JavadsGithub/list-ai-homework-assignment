@@ -24,10 +24,12 @@ export function Tag({ tag, isActive, onClick }: TagProps) {
 
 const $ = styled(Chip)`
   opacity: 0.75;
+
   transition-duration: 200ms;
 
   &:hover {
     opacity: 1;
+
     cursor: pointer;
   }
 `;

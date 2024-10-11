@@ -13,7 +13,11 @@ interface PageContainerProps {
   compact?: boolean;
 }
 
-export function PageContainer({ title, children, compact }: PageContainerProps) {
+export function PageContainer({
+  title,
+  children,
+  compact,
+}: PageContainerProps) {
   return (
     <$>
       <PageHeader title={title} compact={compact} />
@@ -27,8 +31,8 @@ const $ = styled.div`
   max-width: calc(100vw - 280px);
   padding-bottom: 400px;
 
+  position: relative;
+
   display: flex;
   flex-direction: column;
-
-  position: relative;
 `;

@@ -1,6 +1,6 @@
 "use client";
 
-import { SIDE_NAVBAR } from "$/lib/config";
+import { SIDE_NAVBAR } from "$/lib/constants";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,6 +9,7 @@ import styled from "styled-components";
 
 export function NavbarLinks() {
   const pathname = usePathname();
+
   const isButtonAction = useCallback(
     (href: string) =>
       href == ""
@@ -29,6 +30,7 @@ export function NavbarLinks() {
           >
             <div className="w-full flex items-center gap-1">
               {$link.icon}
+
               <span>{$link.title}</span>
             </div>
           </Button>

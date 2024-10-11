@@ -4,15 +4,16 @@ import { useLogout } from "$/lib/hooks";
 import { getUserData } from "$/lib/utils";
 import { Tooltip } from "@nextui-org/react";
 import { IconUserCircle } from "@tabler/icons-react";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import styled from "styled-components";
 
 export function UserDetails() {
-  const [userName] = useState(getUserData());
-  const fullName = useMemo(
-    () => `${userName?.firstName ?? ""} ${userName?.lastName ?? ""}`,
-    [userName]
-  );
+  // >>>------------ Get User Details
+  const userFullName = useMemo(() => {
+    const userData = getUserData();
+    return `${userData?.firstName ?? ""} ${userData?.lastName ?? ""}`;
+  }, []);
+  // Get User Details ------------<<<
 
   const logout = useLogout();
 
@@ -21,7 +22,8 @@ export function UserDetails() {
       <Tooltip content="Click to Logout" color="danger" className="capitalize">
         <IconUserCircle size={32} className="cursor-pointer" onClick={logout} />
       </Tooltip>
-      <h3>{fullName}</h3>
+
+      <h3>{userFullName}</h3>
     </$>
   );
 }
@@ -37,5 +39,6 @@ const $ = styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
+
   font-weight: 500;
 `;

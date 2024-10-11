@@ -18,18 +18,22 @@ import styled from "styled-components";
 import { RoundButton } from "./RoundButton";
 
 export function SidePlayerHeader() {
-  const selectedItemTitle = useAppSelector(
+  // >>>------------ Redux
+  const dispatch = useAppDispatch();
+  const playingItemTitle = useAppSelector(
     (state) => state.layout.playingItem?.title
   );
-  const dispatch = useAppDispatch();
+  // Redux ------------<<<
 
+  // >>>------------ Player Actions
   const closePlayer = useCallback(() => {
     dispatch(closePlayingItem());
-  }, [dispatch, closePlayingItem]);
+  }, [dispatch]);
 
   const minimizePlayer = useCallback(() => {
     dispatch(setPlayMode({ mode: "float" }));
-  }, [dispatch, setPlayMode]);
+  }, [dispatch]);
+  // Player Actions ------------<<<
 
   return (
     <$>
@@ -39,7 +43,7 @@ export function SidePlayerHeader() {
 
       <Spacer x={2} />
 
-      <Title title={selectedItemTitle}>{selectedItemTitle}</Title>
+      <Title title={playingItemTitle}>{playingItemTitle}</Title>
 
       <ButtonsGroup>
         <RoundButton variant="dark">
@@ -76,10 +80,11 @@ const $ = styled.div`
 
 const Title = styled.div`
   max-width: 140px;
-  font-weight: bold;
 
   overflow: hidden;
+
   white-space: nowrap;
+  font-weight: bold;
   text-overflow: ellipsis;
 `;
 

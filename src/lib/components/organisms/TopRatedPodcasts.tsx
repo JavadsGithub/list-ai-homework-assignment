@@ -1,13 +1,15 @@
 "use client";
 
-import { TOP_RATED_PODCASTS } from "$/lib/config";
+import { selectTopRatedPodcasts, useAppSelector } from "$/lib/redux";
 import styled from "styled-components";
 import { TopRatedPodcast } from "../molecules";
 
 export function TopRatedPodcasts() {
+  const topRatedPodcasts = useAppSelector(selectTopRatedPodcasts);
+
   return (
     <$>
-      {TOP_RATED_PODCASTS.map(($podcast) => (
+      {topRatedPodcasts.map(($podcast) => (
         <TopRatedPodcast key={$podcast.id} item={$podcast} />
       ))}
     </$>

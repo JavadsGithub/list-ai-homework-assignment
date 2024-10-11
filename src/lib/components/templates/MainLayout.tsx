@@ -35,6 +35,7 @@ export function MainLayout({ children }: MainLayoutProps) {
 const $ = styled.div`
   width: 100vw;
   height: 100vh;
+
   overflow: hidden;
 
   display: flex;
@@ -44,7 +45,9 @@ const Content = styled.div.attrs({
   className: "hide-scrollbar",
 })`
   width: 100%;
-  background-color: var(--card-background);
+
   overflow-y: scroll;
   overflow-x: hidden;
+
+  background-color: var(--card-background);
 `;

@@ -1,63 +1,74 @@
 "use client";
 
-import { closePlayingItem, setPlayMode, useAppSelector } from "$/lib/redux";
+import { usePlayer } from "$/lib/hooks";
+import { useAppSelector } from "$/lib/redux";
 import { Image } from "@nextui-org/react";
 import { IconPlayerPause, IconX } from "@tabler/icons-react";
 import { motion } from "framer-motion";
-import { useCallback, useMemo } from "react";
-import { useDispatch } from "react-redux";
+import { useMemo } from "react";
 import styled from "styled-components";
 import { RoundButton } from "../atoms";
+
+const frames = {
+  bottom: {
+    idle: "-150px",
+    appear: ["-150px", "40px", "26px"],
+    disappear: "-150px",
+  },
+};
 
 export function FloatPlayer() {
   const { playMode, playingItem } = useAppSelector((state) => ({
     playMode: state.layout.playMode,
     playingItem: state.layout.playingItem,
   }));
-  const dispatch = useDispatch();
 
-  const show = useMemo(() => playMode == "float", [playMode]);
+  const isAppearing = useMemo(() => playMode == "float", [playMode]);
 
-  const maximizePlayer = useCallback(() => {
-    dispatch(setPlayMode({ mode: "drawer" }));
-  }, [setPlayMode, dispatch]);
+  const { maximizePlayer, closePlayer } = usePlayer();
 
-  const closePlayer = useCallback(() => {
-    dispatch(closePlayingItem());
-  }, [closePlayingItem, dispatch]);
-
+  // >>>------------ Animation Props
   const animation = useMemo(
-    () =>
-      playMode == null
-        ? "-150px"
-        : playMode == "float"
-        ? ["-150px", "40px", "26px"]
-        : "-150px",
+    () => ({
+      bottom:
+        playMode == null
+          ? frames.bottom.idle
+          : playMode == "float"
+          ? frames.bottom.appear
+          : frames.bottom.disappear,
+    }),
     [playMode]
   );
 
+  const initial = useMemo(
+    () => ({
+      bottom: "-150px",
+    }),
+    []
+  );
+
+  const transition = useMemo(
+    () => ({ duration: 0.25, delay: isAppearing ? 0.25 : 0 }),
+    [isAppearing]
+  );
+  // Animation Props ------------<<<
+
   return (
-    <$
-      animate={{
-        bottom: animation,
-      }}
-      initial={{
-        bottom: "-150px",
-      }}
-      transition={{ duration: 0.25, delay: show ? 0.25 : 0 }}
-    >
+    <$ animate={animation} initial={initial} transition={transition}>
       <Cover
+        onClick={maximizePlayer}
         width={72}
         height={72}
-        alt="cover"
         src={playingItem?.coverImage}
+        alt="cover"
         radius="none"
-        onClick={maximizePlayer}
       />
 
       <Details>
         <Title>{playingItem?.title}</Title>
+
         <Episode>Episode 13</Episode>
+
         <Elapsed>03:34 / 34:56</Elapsed>
       </Details>
 
@@ -75,18 +86,19 @@ export function FloatPlayer() {
 }
 
 const $ = styled(motion.div)`
+  opacity: 0.75;
+
   width: 370px;
   height: 90px;
   padding: 8px;
   border-radius: 4px;
 
-  background-color: var(--light-background);
-  opacity: 0.75;
-
   position: fixed;
   right: 26px;
 
   display: flex;
+
+  background-color: var(--light-background);
 `;
 
 const Cover = styled(Image)`
@@ -98,23 +110,26 @@ const Cover = styled(Image)`
 const Details = styled.div`
   margin-left: 12px;
 
-  font-size: 14px;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  font-size: 14px;
 `;
 
 const Title = styled.div`
   font-size: 16px;
-  line-height: 21px;
   font-weight: bold;
+  line-height: 21px;
 `;
+
 const Episode = styled.div`
   line-height: 14px;
 `;
+
 const Elapsed = styled.div`
   margin-top: 10px;
+
   font-weight: 700;
 `;
 

@@ -1,7 +1,7 @@
 "use client";
 
-import styled from "styled-components";
 import { TitledParagraph } from "$/lib/components";
+import styled from "styled-components";
 
 export function SingleBookDescription() {
   return (
@@ -10,6 +10,7 @@ export function SingleBookDescription() {
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam,
         inventore?
       </TitledParagraph>
+
       <TitledParagraph title="What Will You Learn">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam deserunt
         quam architecto, eaque laborum perspiciatis culpa possimus provident

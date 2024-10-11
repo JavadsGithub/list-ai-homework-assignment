@@ -1,7 +1,6 @@
-import { SAVED_ITEMS } from "$/lib/config/SAVED_ITEMS";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PODCASTS } from "$/lib/constants/PODCASTS";
 import { RootState } from "$/lib/redux";
-import { PODCASTS } from "$/lib/config/PODCASTS";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type ItemType = "podcast" | "book";
 export type PlayMode = "drawer" | "float" | null;

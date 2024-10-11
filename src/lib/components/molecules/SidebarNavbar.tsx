@@ -1,7 +1,7 @@
 "use client";
 
-import styled from "styled-components";
 import { NavbarLinks, UserDetails } from "$/lib/components";
+import styled from "styled-components";
 
 export function SidebarNavbar() {
   return (
@@ -14,9 +14,10 @@ export function SidebarNavbar() {
 
 const $ = styled.div`
   width: 100%;
-  background-color: var(--card-background);
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  background-color: var(--card-background);
 `;

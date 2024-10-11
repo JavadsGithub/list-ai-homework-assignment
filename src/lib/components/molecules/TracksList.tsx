@@ -1,13 +1,13 @@
 "use client";
 
-import { PLAYING_ITEM_TRACKS } from "$/lib/config";
+import { PLAYER_TRACKS } from "$/lib/constants";
 import { IconPlayerPlayFilled } from "@tabler/icons-react";
 import styled from "styled-components";
 
 export function TracksList() {
   return (
     <$>
-      {PLAYING_ITEM_TRACKS.map(($track) => (
+      {PLAYER_TRACKS.map(($track) => (
         <Track key={$track.trackNumber}>
           <Id>{$track.trackNumber}</Id>
 
@@ -32,15 +32,16 @@ const $ = styled.ul`
 `;
 
 const Track = styled.li`
-  font-size: 14px;
-
   display: flex;
   align-items: center;
+
+  font-size: 14px;
 
   transition-duration: 500ms;
 
   &:hover {
     opacity: 0.5;
+
     cursor: pointer;
   }
 `;
@@ -48,6 +49,7 @@ const Track = styled.li`
 const Id = styled.div`
   margin-right: 20px;
 `;
+
 const Name = styled.div``;
 
 const PlayButton = styled.button`
@@ -57,9 +59,9 @@ const PlayButton = styled.button`
   border: 2px solid white;
   margin-left: auto;
 
-  background-color: black;
-
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-color: black;
 `;

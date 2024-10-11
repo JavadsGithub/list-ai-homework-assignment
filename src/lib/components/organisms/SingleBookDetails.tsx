@@ -1,42 +1,48 @@
 "use client";
 
-import { Item, setPlayingItem, useAppDispatch } from "$/lib/redux";
-import { Image, Spacer, useCalendar } from "@nextui-org/react";
+import { usePlayer } from "$/lib/hooks";
+import { Item } from "$/lib/redux";
+import { Image, Spacer } from "@nextui-org/react";
 import { IconBook, IconHeadphones } from "@tabler/icons-react";
-import { useCallback } from "react";
 import styled from "styled-components";
 
 interface SingleBookDetailsProps {
-  book?: Item;
+  book: Item;
 }
 
 export function SingleBookDetails({ book }: SingleBookDetailsProps) {
-  const dispatch = useAppDispatch();
-  const playItem = useCallback(() => {
-    if (book) dispatch(setPlayingItem({ item: book }));
-  }, [dispatch, setPlayingItem, book]);
+  const { playItem } = usePlayer();
 
   return (
     <$>
       <Group>
-        <Image width={160} height={160} src={book?.coverImage} radius="sm" />
+        <Image
+          width={160}
+          height={160}
+          src={book?.coverImage}
+          radius="sm"
+          alt="book-cover"
+        />
 
         <Details>
           <Title>{book?.title}</Title>
+
           <Author>{book?.author}</Author>
         </Details>
       </Group>
 
       <Group>
-        <Button onClick={playItem}>
+        <Button onClick={() => playItem(book)}>
           <IconHeadphones />
+
           <span>Listen</span>
         </Button>
 
         <Spacer x={3} />
 
-        <Button onClick={playItem}>
+        <Button onClick={() => playItem(book)}>
           <IconBook />
+
           <span>Lists</span>
         </Button>
       </Group>
@@ -70,20 +76,22 @@ const Title = styled.h2`
   font-weight: bold;
 `;
 const Author = styled.div`
-  font-size: 20px;
   opacity: 0.6;
+
+  font-size: 20px;
 `;
 
 const Button = styled.button`
   height: 48px;
   padding: 0 22px 0 22px;
   border-radius: 24px;
-  font-weight: bold;
 
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
+
+  font-weight: bold;
 
   background-color: var(--round-button-light-background);
 

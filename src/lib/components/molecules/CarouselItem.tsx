@@ -7,6 +7,7 @@ import styled, { css } from "styled-components";
 
 interface CarouselItemProps {
   item: Item;
+  // use external reference for performance optimization
   playItem: (item: Item) => void;
   showProgress?: boolean;
 }
@@ -16,23 +17,30 @@ export function CarouselItem({
   playItem,
   showProgress,
 }: CarouselItemProps) {
-  const badged = useMemo(() => Math.random() > 0.5, []);
+  // mocking saved items for showing dot badge
+  const isSaved = useMemo(() => Math.random() > 0.5, []);
 
   return (
     <$ key={item.id} onClick={() => playItem(item)}>
-      <DotMark className={String(!badged && "hidden")} />
+      {/* used String() for avoiding short-circuit pattern's undefined behavior */}
+      <DotMark className={String(!isSaved && "hidden")} />
+
       <ItemCover
         src={item.coverImage}
-        alt="cover"
         width={120}
         height={120}
         radius="sm"
+        alt="cover"
       />
+
       <Spacer y={2} />
+
       <Details>
         {/* "compactMode" is corresponding to "showProgress" */}
         <ItemTitle compactMode={showProgress}>{item.title}</ItemTitle>
+
         <ItemAuthor>{item.author}</ItemAuthor>
+
         {showProgress && <Progress>{item.progress}% finished</Progress>}
       </Details>
     </$>
@@ -43,14 +51,15 @@ const $ = styled.div`
   width: 120px;
   height: 200px;
 
-  flex-shrink: 0;
-
   position: relative;
+
+  flex-shrink: 0;
 
   transition-duration: 200ms;
 
   &:hover {
     opacity: 0.5;
+
     cursor: pointer;
   }
 `;
@@ -63,14 +72,16 @@ const ItemTitle = styled.div<{ compactMode?: boolean }>`
     props.compactMode &&
     css`
       overflow: hidden;
+
       white-space: nowrap;
       text-overflow: ellipsis;
     `}
 `;
 
 const ItemAuthor = styled.div`
-  font-size: 12px;
   opacity: 0.5;
+
+  font-size: 12px;
 `;
 
 const Progress = styled.div`
@@ -79,12 +90,12 @@ const Progress = styled.div`
 `;
 
 const ItemCover = styled(Image)`
-  object-fit: cover;
-  background-color: var(--light-background);
-
   pointer-events: none;
 
   cursor: pointer;
+
+  background-color: var(--light-background);
+  object-fit: cover;
 `;
 
 const Details = styled.div`
@@ -100,10 +111,10 @@ const DotMark = styled.span`
   height: 14px;
   border-radius: 50%;
 
-  background-color: var(--brand-light);
-
   position: absolute;
   top: -4px;
   right: -4px;
   z-index: 100;
+
+  background-color: var(--brand-light);
 `;

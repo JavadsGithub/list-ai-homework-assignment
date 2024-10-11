@@ -10,12 +10,16 @@ import {
 } from "$/lib/components";
 import { Spacer, Spinner } from "@nextui-org/react";
 import { useParams } from "next/navigation";
+import { useMemo } from "react";
 import styled from "styled-components";
 
 export function SingleBookPage() {
   const { id } = useParams();
   const getSingleBookQuery = useGetSingleBook(String(id));
-  const book = getSingleBookQuery.data?.book;
+  const book = useMemo(
+    () => getSingleBookQuery.data?.book,
+    [getSingleBookQuery.data?.book]
+  );
 
   return (
     <PageContainer title={book?.title} compact>
@@ -23,7 +27,7 @@ export function SingleBookPage() {
         {getSingleBookQuery.isLoading ? (
           <Spinner />
         ) : (
-          <SingleBookDetails book={book} />
+          <SingleBookDetails book={book!} />
         )}
 
         <Spacer y={10} />

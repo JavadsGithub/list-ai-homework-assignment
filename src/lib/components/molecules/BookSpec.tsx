@@ -1,6 +1,5 @@
 "use client";
 
-import { IconBook } from "@tabler/icons-react";
 import React from "react";
 import styled from "styled-components";
 
@@ -16,7 +15,7 @@ export function BookSpec({ description, icon, title, value }: BookSpecProps) {
     <$>
       <Title>
         {icon}
-        {title}
+        <span>{title}</span>
       </Title>
 
       <Point>{value}</Point>
@@ -50,6 +49,7 @@ const Point = styled.h3`
 `;
 
 const Category = styled.div`
-  font-size: bold;
   opacity: 0.4;
+
+  font-size: bold;
 `;

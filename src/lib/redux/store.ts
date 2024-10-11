@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { testReducer, layoutReducer } from "./reducers";
+import { booksReducer, layoutReducer, podcastReducer } from "./reducers";
 
 export const store = configureStore({
-  devTools: { name: "list-ai" },
+  devTools: { name: "LIST_AI" },
   reducer: {
-    test: testReducer,
     layout: layoutReducer,
+    podcasts: podcastReducer,
+    books: booksReducer,
   },
 });
 

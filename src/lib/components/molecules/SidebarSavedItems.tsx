@@ -1,7 +1,7 @@
 "use client";
 
 import { SavedItemsList, TagsBar } from "$/lib/components";
-import { SAVED_ITEMS_TAGS } from "$/lib/config";
+import { TAGS } from "$/lib/constants";
 import { IconBookmark } from "@tabler/icons-react";
 import { Suspense } from "react";
 import styled from "styled-components";
@@ -11,12 +11,13 @@ export function SidebarSavedItems() {
     <$>
       <Header>
         <IconBookmark size={22} opacity={0.6} />
-        <div className="font-bold">Saved Items</div>
+
+        <Title>Saved Items</Title>
       </Header>
 
       <Suspense>
         <div className="px-5">
-          <TagsBar tags={SAVED_ITEMS_TAGS} />
+          <TagsBar tags={TAGS.savedItems} />
         </div>
       </Suspense>
 
@@ -28,11 +29,11 @@ export function SidebarSavedItems() {
 const $ = styled.div`
   height: 100%;
 
-  background-color: var(--card-background);
-
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  background-color: var(--card-background);
 `;
 
 const Header = styled.div`
@@ -42,4 +43,8 @@ const Header = styled.div`
 
   display: flex;
   gap: 8px;
+`;
+
+const Title = styled.h3`
+  font-weight: 700;
 `;

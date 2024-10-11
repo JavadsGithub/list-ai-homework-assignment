@@ -1,18 +1,12 @@
 "use client";
 
-import { IconStarFilled } from "@tabler/icons-react";
+import { Stars } from "$/lib/components";
 import styled from "styled-components";
 
 export function Rating() {
   return (
     <$>
-      <Stars>
-        <IconStarFilled size={16} />
-        <IconStarFilled size={16} />
-        <IconStarFilled size={16} />
-        <IconStarFilled size={16} />
-        <IconStarFilled size={16} />
-      </Stars>
+      <Stars />
       <span>4.5 - 229 rating</span>
     </$>
   );
@@ -28,9 +22,4 @@ const $ = styled.div`
 
   font-weight: bold;
   color: var(--brand);
-`;
-
-const Stars = styled.div`
-  display: flex;
-  gap: 4px;
 `;

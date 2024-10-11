@@ -3,8 +3,10 @@
 import { ButtonHTMLAttributes } from "react";
 import styled from "styled-components";
 
+export type RoundButtonVariant = "light" | "dark";
+
 interface RoundButtonProps extends ButtonHTMLAttributes<"button"> {
-  variant: "light" | "dark";
+  variant: RoundButtonVariant;
 }
 
 export function RoundButton({ variant, children, ...rest }: RoundButtonProps) {
@@ -15,7 +17,7 @@ export function RoundButton({ variant, children, ...rest }: RoundButtonProps) {
   );
 }
 
-const $ = styled.button<{ variant: "light" | "dark" }>`
+const $ = styled.button<{ variant: RoundButtonVariant }>`
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -30,8 +32,8 @@ const $ = styled.button<{ variant: "light" | "dark" }>`
   transition-duration: 200ms;
 
   &:hover {
+    cursor: pointer;
     background-color: ${(props) =>
       `var(--round-button-${props.variant}-background-hover)`};
-    cursor: pointer;
   }
 `;

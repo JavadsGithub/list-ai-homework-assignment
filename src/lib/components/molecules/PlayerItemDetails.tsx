@@ -20,7 +20,9 @@ export function PlayerItemDetails() {
 
       <Details>
         <Chapter>{playingItem?.author}</Chapter>
+
         <ChapterName>{playingItem?.description}</ChapterName>
+
         <ChapterCategory>{playingItem?.itemType}</ChapterCategory>
       </Details>
     </$>
@@ -51,19 +53,22 @@ const Details = styled.div`
 `;
 
 const Chapter = styled.div`
-  font-size: 11px;
   opacity: 0.7;
+
+  font-size: 11px;
 `;
 const ChapterName = styled.div`
-  font-weight: bold;
-  white-space: nowrap;
   overflow: hidden;
+
+  white-space: nowrap;
+  font-weight: bold;
 `;
 const ChapterCategory = styled.div`
-  font-size: 16px;
   opacity: 0.7;
+
+  font-size: 16px;
 `;
 
 const Cover = styled(Image)`
-    object-fit: cover;
-`
+  object-fit: cover;
+`;

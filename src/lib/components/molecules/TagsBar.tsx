@@ -23,6 +23,7 @@ interface TagsBarProps {
   tags: ITag[];
 }
 
+// ** WARNING ** use inside <Suspense />
 export function TagsBar({ tags }: TagsBarProps) {
   const searchParams = useSearchParams();
   const { pushQueryString } = useQueryParams();
@@ -51,6 +52,6 @@ export function TagsBar({ tags }: TagsBarProps) {
 
 const $ = styled.div`
   display: flex;
-  gap: 6px;
   flex-wrap: wrap;
+  gap: 6px;
 `;

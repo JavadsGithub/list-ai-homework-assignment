@@ -1,4 +1,4 @@
-import { BOOKS } from "$/lib/config";
+import { BOOKS } from "$/lib/constants";
 
 export async function GET(
   request: Request,
