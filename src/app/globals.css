@@ -3,15 +3,34 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #181818;
+  --foreground: #ffffff;
+  --card-background: #252526;
+  --light-background: #3a3a3b;
+  --dark-background: #020709;
+  --round-button-dark-background: #1b1f21;
+  --round-button-light-background: #494949;
+  --round-button-light-background: #494949;
+  --round-button-dark-background-hover: #383c3d;
+  --round-button-light-background-hover: #5d5d5d;
+  --brand: #0db5ff;
+  --brand-light: #7f98fe;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #181818;
     --foreground: #ededed;
   }
+}
+
+.hide-scrollbar {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 body {

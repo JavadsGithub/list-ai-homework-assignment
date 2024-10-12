@@ -10,6 +10,28 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  compiler: {
+    styledComponents: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.amazonaws.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/podcasts",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

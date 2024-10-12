@@ -1,5 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import { getTokens, refreshToken } from "$/lib/utils";
 
 type AxiosConfig = any;
 
@@ -19,20 +20,29 @@ export const client = (props?: ClientProps) => {
   });
 
   Axios.interceptors.request.use((config: AxiosConfig) => {
-    // Checks if token need to be loaded
-    return props?.auth
-      ? {
-          ...config,
-          headers: {
-            ...config.header,
-            Authorization:
-              "Bearer " + props.token
-                ? props.token
-                : Cookies.get(process.env["ACCESS_TOKEN"]!),
-          },
-        }
-      : config;
+    const { accessToken } = getTokens();
+    if (accessToken) {
+      config.headers["Authorization"] = `Bearer ${accessToken}`;
+    }
+    return config;
   });
+
+  Axios.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+      // Refreshes the token if expired.
+      if (error.response?.status === 401) {
+        const tokenRefreshed = await refreshToken(Axios);
+
+        if (tokenRefreshed) {
+          return Axios(error.config); // Retry the original request
+        } else {
+          return Promise.reject(error);
+        }
+      }
+      return Promise.reject(error);
+    }
+  );
 
   return Axios;
 };
