@@ -19,14 +19,10 @@ This is an applications using Next.js 14 (app directory).
 
 ### Hints
 
-- Axios + Tanstack Query used for handling `api calls` and creating custom `controller hooks`.
-
-  - Authentication & token refresh mechanism implemented using axios instance in `lib/api/client.api.ts`.
-  - Routes are `protected` using middleware in `src/middleware.ts`.
-  - `SSR` example in `"/books/:id"` route.
-  - `CSR` & `Token Refresh` example in `UserDetails` component.
-
-- `Tailwindcss` is a dependency for `NextUI` but `styled-components` used as main style-engine. (unfortunately not available for RSCs)
+- Long and obscure parts are documented or commented.
+- **Authentication & Token Refresh Mechanism**: `lib/api/client.api.ts`, `lib/utils/auth.helper.ts`.
+- **SSR**: `/books/:id` route.
+- **CSR**: `UserDetails` component.
 
 ### install dependencies:
 
