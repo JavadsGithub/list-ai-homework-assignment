@@ -1,4 +1,4 @@
-import { getSingleProductController } from "$/lib/api/controllers/books";
+import { getSingleBookController } from "$/lib/api/controllers/books";
 import { SingleBookPage } from "$/lib/components";
 import {
   dehydrate,
@@ -15,7 +15,7 @@ export default async function Page({
 
   await queryClient.prefetchQuery({
     queryKey: ["book"],
-    queryFn: () => getSingleProductController({ id }),
+    queryFn: () => getSingleBookController({ id }),
   });
 
   return (

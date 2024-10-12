@@ -24,7 +24,7 @@ export function NavbarLinks() {
       {SIDE_NAVBAR.map(($link) => (
         <Link key={$link.id} href={$link.href}>
           <Button
-            variant={isButtonAction($link.href) ? "flat" : "light"}
+            variant={isButtonAction($link.href) ? "solid" : "light"}
             radius="sm"
             className="w-full text-medium flex px-3 h-10"
           >

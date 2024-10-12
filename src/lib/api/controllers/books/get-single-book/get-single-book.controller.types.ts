@@ -4,7 +4,6 @@ export interface GetSingleBookProps {
   id: string;
 }
 
-// it's actually a product
 export interface GetSingleBookResponse {
   book: Item;
 }

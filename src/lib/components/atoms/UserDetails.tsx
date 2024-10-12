@@ -1,29 +1,46 @@
 "use client";
 
+import { useGetMe } from "$/lib/api/controllers/auth/get-me";
 import { useLogout } from "$/lib/hooks";
-import { getUserData } from "$/lib/utils";
-import { Tooltip } from "@nextui-org/react";
+import { Skeleton, Tooltip } from "@nextui-org/react";
 import { IconUserCircle } from "@tabler/icons-react";
 import { useMemo } from "react";
 import styled from "styled-components";
 
 export function UserDetails() {
   // >>>------------ Get User Details
+  const getMeQuery = useGetMe();
+
   const userFullName = useMemo(() => {
-    const userData = getUserData();
-    return `${userData?.firstName ?? ""} ${userData?.lastName ?? ""}`;
-  }, []);
+    return `${getMeQuery.data?.firstName ?? ""} ${
+      getMeQuery.data?.lastName ?? ""
+    }`;
+  }, [getMeQuery.data]);
   // Get User Details ------------<<<
 
   const logout = useLogout();
 
   return (
     <$>
-      <Tooltip content="Click to Logout" color="danger" className="capitalize">
-        <IconUserCircle size={32} className="cursor-pointer" onClick={logout} />
-      </Tooltip>
+      {getMeQuery.isLoading ? (
+        <Skeleton className="h-8 w-full rounded-lg" />
+      ) : (
+        <>
+          <Tooltip
+            content="Click to Logout"
+            color="danger"
+            className="capitalize"
+          >
+            <IconUserCircle
+              size={32}
+              className="cursor-pointer"
+              onClick={logout}
+            />
+          </Tooltip>
 
-      <h3>{userFullName}</h3>
+          <h3>{userFullName}</h3>
+        </>
+      )}
     </$>
   );
 }

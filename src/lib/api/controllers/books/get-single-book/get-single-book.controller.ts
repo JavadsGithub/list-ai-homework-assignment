@@ -1,7 +1,7 @@
 import axios from "axios";
 import { GetSingleBookController } from "./get-single-book.controller.types";
 
-export const getSingleProductController: GetSingleBookController = async ({
+export const getSingleBookController: GetSingleBookController = async ({
   id,
 }) => {
   try {

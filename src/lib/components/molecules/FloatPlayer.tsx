@@ -86,7 +86,7 @@ export function FloatPlayer() {
 }
 
 const $ = styled(motion.div)`
-  opacity: 0.75;
+  opacity: 0.9;
 
   width: 370px;
   height: 90px;
@@ -95,6 +95,7 @@ const $ = styled(motion.div)`
 
   position: fixed;
   right: 26px;
+  z-index: 999;
 
   display: flex;
 
